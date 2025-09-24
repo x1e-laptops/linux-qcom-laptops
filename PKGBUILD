@@ -5,8 +5,8 @@ pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
 )
-pkgver=6.17.rc5.arch1
-pkgrel=8
+pkgver=6.17.rc6.arch1
+pkgrel=2
 pkgdesc='Linux for qcom laptops'
 url='https://gitlab.com/Linaro/arm64-laptops/linux'
 arch=('x86_64' 'aarch64')
@@ -35,7 +35,7 @@ _base_pkgver=${pkgver%.arch*}
 _srctag=v${_base_pkgver%.*}-${_base_pkgver##*.}
 _srcname=$pkgbase-${_srctag}
 source=(
-  https://gitlab.com/Linaro/arm64-laptops/linux/-/archive/qcom-laptops-v6.17-rc5/linux-qcom-laptops-v6.17-rc5.tar.gz
+  https://gitlab.com/Linaro/arm64-laptops/linux/-/archive/qcom-laptops-v6.17-rc6/linux-qcom-laptops-v6.17-rc6.tar.gz
   https://github.com/binarycraft007/modextractor/releases/download/v0.0.1/modextractor
   pmos.config
   misc.config
@@ -62,7 +62,7 @@ source=(
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=(
-  'd565a50f6c14d366d812b36b01ee2e60b367f2e8ef6e6e9b92cf465488cf591b'
+  'd812fd3c477bee2c9a14c5ef8001e26dd3d4afff4ac62a061ea18b6a11059ea4'
   '5ce56beb80c1e49a9cba4148144bd22ee5f37d8d02a3c0cea97d3766a9b1460f'
   '72197885465d3f07b9d5ea7b11fb720f15070b7eeb57b73c0a83082c290bee00'
   '4f706de5a92c30d614a4cd5cf9351cafce28fd8ef83b56fcc6820973fcce2421'
@@ -94,6 +94,8 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 export ARCH=arm64
 export CARCH=aarch64
 export MAKEFLAGS="-j$(nproc)"
+export LLVM=1
+export CROSS_COMPILE=aarch64-linux-gnu-
 
 prepare() {
   cd $_srcname
@@ -116,18 +118,20 @@ prepare() {
 
   echo "Setting config..."
 
+  unset LDFLAGS
   cp "$srcdir/pmos.config" arch/"$ARCH"/configs/
   cp "$srcdir/misc.config" arch/"$ARCH"/configs/
-  make LLVM=1 defconfig qcom_laptops.config pmos.config misc.config
+  make defconfig qcom_laptops.config pmos.config misc.config
 
-  make LLVM=1 -s kernelrelease > version
+  make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 }
 
 build() {
   cd $_srcname
-  make LLVM=1 all
-  make LLVM=1 -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
+  unset LDFLAGS
+  make all
+  make -C tools/bpf/bpftool vmlinux.h feature-clang-bpf-co-re=1
 }
 
 package_linux-qcom-laptops() {

@@ -5,8 +5,8 @@ pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
 )
-pkgver=6.17.rc6.arch1
-pkgrel=2
+pkgver=6.17.arch1
+pkgrel=1
 pkgdesc='Linux for qcom laptops'
 url='https://gitlab.com/Linaro/arm64-laptops/linux'
 arch=('x86_64' 'aarch64')
@@ -30,12 +30,10 @@ options=(
   !debug
   !strip
 )
-_branch=qcom-laptops
-_base_pkgver=${pkgver%.arch*}
-_srctag=v${_base_pkgver%.*}-${_base_pkgver##*.}
-_srcname=$pkgbase-${_srctag}
+_commit=4a9b759f28636aa25db450062fd9453511d530d9
+_srcname=linux-${_commit}
 source=(
-  https://gitlab.com/Linaro/arm64-laptops/linux/-/archive/qcom-laptops-v6.17-rc6/linux-qcom-laptops-v6.17-rc6.tar.gz
+  "https://gitlab.com/Linaro/arm64-laptops/linux/-/archive/${_commit}/linux-${_commit}.tar.gz"
   https://github.com/binarycraft007/modextractor/releases/download/v0.0.1/modextractor
   pmos.config
   misc.config
@@ -45,24 +43,21 @@ source=(
   dtbs.sh
   https://github.com/zig-pkgs/linux-tools/archive/refs/tags/v0.0.1.tar.gz
   https://github.com/zig-pkgs/linux-tools/releases/download/v0.0.1/linux-tools-cache-v0.0.1.tar.gz
-  0001-arm64-dts-qcom-Add-support-for-Dell-Inspiron-7441-La.patch
-  0002-arm64-dts-qcom-x1e80100-dell-inspiron14-7441-Switch-.patch
-  0003-media-ov02c10-Fix-default-vertical-flip.patch
-  0004-media-ov02c10-Support-hflip-and-vflip.patch
-  0005-arm64-dts-qcom-x1e80100-t14s-Mark-ov02c10-as-inverte.patch
-  0006-media-ov02c10-Invert-bayer-order-when-rotation-is-pr.patch
-  0007-arm64-dts-qcom-x1e80100-Add-videocc.patch
-  0008-dt-bindings-media-qcom-sm8550-iris-Add-X1E80100-comp.patch
-  0009-arm64-dts-qcom-x1e80100-Add-IRIS-video-codec.patch
-  0010-arm64-dts-qcom-x1e80100-crd-Enable-IRIS-video-codec.patch
-  0011-arm64-dts-qcom-support-sound-on-Asus-Vivobook-S15.patch
-  0012-arm64-dts-qcom-x1e80100-asus-vivobook-s15-Enable-Iri.patch
-  0013-hid-add-asus-vivobook-s-15.patch
-  0014-PCI-ASPM-Allow-controller-drivers-to-override-defaul.patch
+  0001-media-ov02c10-Fix-default-vertical-flip.patch
+  0002-media-ov02c10-Support-hflip-and-vflip.patch
+  0003-arm64-dts-qcom-x1e80100-t14s-Mark-ov02c10-as-inverte.patch
+  0004-media-ov02c10-Invert-bayer-order-when-rotation-is-pr.patch
+  0005-arm64-dts-qcom-support-sound-on-Asus-Vivobook-S15.patch
+  0006-arm64-dts-qcom-x1e80100-asus-vivobook-s15-Enable-Iri.patch
+  0007-hid-add-asus-vivobook-s-15.patch
+  0008-PCI-ASPM-Allow-controller-drivers-to-override-defaul.patch
+  0009-add-custom-config.patch
+  0010-mkdebian-add-missing-dependency-add-hook-scripts.patch
+  0011-arm64-dts-qcom-x1-asus-vivobook-s15-Add-OV02C10-RGB.patch
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=(
-  'd812fd3c477bee2c9a14c5ef8001e26dd3d4afff4ac62a061ea18b6a11059ea4'
+  '4178519c5ca2a3193928ccffd972fecfda68c1a0ffafb4bbcb9930ca0d84dba0'
   '5ce56beb80c1e49a9cba4148144bd22ee5f37d8d02a3c0cea97d3766a9b1460f'
   '72197885465d3f07b9d5ea7b11fb720f15070b7eeb57b73c0a83082c290bee00'
   '4f706de5a92c30d614a4cd5cf9351cafce28fd8ef83b56fcc6820973fcce2421'
@@ -72,20 +67,17 @@ sha256sums=(
   'c1a0097e5e5640695f7d56c0dbe37d163602624b8b8c970f91221158cd321cce'
   'a05cbef6253c21ba96cf03d97fe9df69acf5625d58b5034ddaf0183ab8e0fff7'
   '10deee7fd409cd463bee7e5b53e5e78a2ad64959734b6e43559fa870e405376b'
-  '9587fdd823c3a4344a535ff79a61502910175f8c6358b3714b3a4987464b1386'
-  'abbbba03332c35496f000998b8f1c84bb681abdfdf60a84703ae929e8a337623'
-  'e046ff03b962eeb260640cb0513c270ec8ace8a3a458492599a2d5ba045d6a9f'
-  'ba16a3ee5c1d0ab3eebc1f1d86adb631ec511be7a1f1b00c7f2f69a289d0d524'
-  '11875bcf2f3a699c4f198e1db67d93ebf3f19c3ddd6ca12312c0e418ea34bbab'
-  '1967472090ad1eae294d1da242c0485b3f105f773ab35aff2c2f18a15b0cc945'
-  'c1666b7cd8cbb3d6ab20ccd30e8bf43a500a23a6a28949ccb4c14cb2d7d67b85'
-  '3a35f1c67ad73c26bd2fa7a3f674f06c1a80f6d6d16c11f7e09aa22eee4cd815'
-  '40b5f65beaa23f8e22b01b309fc4ffcc12914e8f3baf5983f5fc382e5167b05f'
-  'f857615dedf69082825090b8cecdb5a6277b75be21fc5493e04ba3eaed9f21e5'
-  '19bf0c9a4489a550472d325fb61493b732028f767121013667cfa9b733306bce'
-  'f2f000d6f7d071c4dc55f341b5a0c3835377764ed560cd099d8b714509628742'
-  'cd0e029b2a8eae3dec616b2eb869ac21c72197ec6c5658a808024dbb8617ff47'
-  '4bb05d46c6b699e85ff9708b9f3303d463ada1527ee34ae0846eed826d02436f'
+  'ffee97cbdab51670115868e2e9833878a4621953c56a1d9bf508996076c165ce'
+  '31e4a70b746bdccc3b81deaa473acf897696a83e357ff317d32af1ec1ab991ef'
+  'fa769822e4090e6f0894ed30faf721b8cb30532c8df61d734358b3c865363e92'
+  '566dd05341e9665a90b9dead343e535b3ae170527f13bd3c1ee70e710058132f'
+  '737d7967640a6a8f747243dfecb2637f6e0a7105d0b0ffe1686907d29e97947d'
+  '3d5bbf875b33c84369a1e413d2303f3d77c9200678996472d75b47191bfaa2c4'
+  'c26c2aac1ed57a11df77fcf1205dc483fb6001176000d09d09b48cd3686e765e'
+  'f709dc419934fede184686e8353096f1088589844e8cc542d97dc6ca17ba414d'
+  'e3213f77f5fd8ccdce11e7bca3ea8aadc0c65519954480f8000a942417ba664f'
+  'eeba26f37021b00670c493eb4bb2dddad244c490301c1def548d6049d6884949'
+  '98489ad42db0a5f3d8dd6112af8508581fa22cd4a0caf5864b72331e1b915170'
 )
 
 export KBUILD_BUILD_HOST=archlinux

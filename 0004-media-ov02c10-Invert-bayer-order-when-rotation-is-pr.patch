@@ -1,7 +1,7 @@
-From 229cf65a6fa3e12fe6ad51d065edee5e823127f0 Mon Sep 17 00:00:00 2001
+From 7e2da48fcb2b65d014ed80b74bc4a677910ecbd1 Mon Sep 17 00:00:00 2001
 From: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
 Date: Mon, 1 Sep 2025 21:14:25 +0100
-Subject: [PATCH 06/10] media: ov02c10: Invert bayer order when rotation is
+Subject: [PATCH 04/11] media: ov02c10: Invert bayer order when rotation is
  present in dts
 
 When we invert the sensor output the order of bayer bytes changes.
@@ -13,7 +13,7 @@ Signed-off-by: Bryan O'Donoghue <bryan.odonoghue@linaro.org>
  1 file changed, 30 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/media/i2c/ov02c10.c b/drivers/media/i2c/ov02c10.c
-index 103d007415348..750047afba79e 100644
+index 103d00741..750047afb 100644
 --- a/drivers/media/i2c/ov02c10.c
 +++ b/drivers/media/i2c/ov02c10.c
 @@ -394,6 +394,10 @@ struct ov02c10 {

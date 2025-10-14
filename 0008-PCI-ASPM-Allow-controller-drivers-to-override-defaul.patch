@@ -1,8 +1,8 @@
-From fd679d59f3f249a2c17b0336c5422ad8640a98de Mon Sep 17 00:00:00 2001
+From 8c0246ee803f376e55f102c0a67b58d54b09548e Mon Sep 17 00:00:00 2001
 From: binarycraft007 <elliot.huang.signed@gmail.com>
 Date: Sun, 21 Sep 2025 22:14:32 +0800
-Subject: [PATCH] PCI/ASPM: Allow controller drivers to override default ASPM
- and CLKPM link state
+Subject: [PATCH 08/11] PCI/ASPM: Allow controller drivers to override default
+ ASPM and CLKPM link state
 
 ---
  drivers/pci/controller/dwc/pcie-qcom.c | 26 ++++++++++----------------
@@ -11,7 +11,7 @@ Subject: [PATCH] PCI/ASPM: Allow controller drivers to override default ASPM
  3 files changed, 25 insertions(+), 18 deletions(-)
 
 diff --git a/drivers/pci/controller/dwc/pcie-qcom.c b/drivers/pci/controller/dwc/pcie-qcom.c
-index af705d7..ee14b1b 100644
+index af705d71f..ee14b1b27 100644
 --- a/drivers/pci/controller/dwc/pcie-qcom.c
 +++ b/drivers/pci/controller/dwc/pcie-qcom.c
 @@ -1040,20 +1040,6 @@ static int qcom_pcie_post_init_2_7_0(struct qcom_pcie *pcie)
@@ -69,7 +69,7 @@ index af705d7..ee14b1b 100644
  			      pci_domain_nr(pp->bridge->bus));
  	if (!name) {
 diff --git a/drivers/pci/pcie/aspm.c b/drivers/pci/pcie/aspm.c
-index 08fb0b0..90be6ce 100644
+index 08fb0b079..90be6ce18 100644
 --- a/drivers/pci/pcie/aspm.c
 +++ b/drivers/pci/pcie/aspm.c
 @@ -380,6 +380,7 @@ static void pcie_clkpm_cap_init(struct pcie_link_state *link, int blacklist)
@@ -114,7 +114,7 @@ index 08fb0b0..90be6ce 100644
  	/* Setup initial capable state. Will be updated later */
  	link->aspm_capable = link->aspm_support;
 diff --git a/include/linux/pci.h b/include/linux/pci.h
-index 59876de..b7d82e6 100644
+index 59876de13..b7d82e601 100644
 --- a/include/linux/pci.h
 +++ b/include/linux/pci.h
 @@ -620,6 +620,10 @@ struct pci_host_bridge {

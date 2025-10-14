@@ -1,14 +1,14 @@
-From 28b8d089de2a79a56f5b26d2d695a4b92bdc05b1 Mon Sep 17 00:00:00 2001
+From 183a324dc2f9b68eb51d17d89e1af05fe6f8a07a Mon Sep 17 00:00:00 2001
 From: binarycraft007 <elliot.huang.signed@gmail.com>
 Date: Mon, 2 Jun 2025 13:27:03 +0800
-Subject: [PATCH 1/2] arm64: dts: qcom: support sound on Asus Vivobook S15
+Subject: [PATCH 05/11] arm64: dts: qcom: support sound on Asus Vivobook S15
 
 ---
  .../dts/qcom/x1e80100-asus-vivobook-s15.dts   | 202 ++++++++++++++++++
  1 file changed, 202 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/qcom/x1e80100-asus-vivobook-s15.dts b/arch/arm64/boot/dts/qcom/x1e80100-asus-vivobook-s15.dts
-index eee21bd..0a01b93 100644
+index 4f918649e..62ffee10c 100644
 --- a/arch/arm64/boot/dts/qcom/x1e80100-asus-vivobook-s15.dts
 +++ b/arch/arm64/boot/dts/qcom/x1e80100-asus-vivobook-s15.dts
 @@ -23,6 +23,32 @@ aliases {
@@ -247,7 +247,7 @@ index eee21bd..0a01b93 100644
  &tlmm {
  	gpio-reserved-ranges = <34 2>, /* Unused */
  			       <44 4>, /* SPI (TPM) */
-@@ -858,6 +1052,14 @@ tpad_default: tpad-default-state {
+@@ -852,6 +1046,14 @@ tpad_default: tpad-default-state {
  		bias-disable;
  	};
  

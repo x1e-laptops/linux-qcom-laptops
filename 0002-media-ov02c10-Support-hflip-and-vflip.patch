@@ -1,7 +1,7 @@
-From 25a26a653dcccfe44f97f4f3f8cf3201293b8d81 Mon Sep 17 00:00:00 2001
+From 20a28422b1ba92297220920cf2a8e23693d97a96 Mon Sep 17 00:00:00 2001
 From: Sebastian Reichel <sre@kernel.org>
 Date: Wed, 20 Aug 2025 02:13:20 +0200
-Subject: [PATCH 04/10] media: ov02c10: Support hflip and vflip
+Subject: [PATCH 02/11] media: ov02c10: Support hflip and vflip
 
 Support horizontal and vertical flip, which is necessary to handle
 upside-down mounted sensors.
@@ -14,7 +14,7 @@ Reviewed-by: Bryan O'Donoghue <bod@kernel.org>
  1 file changed, 24 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/media/i2c/ov02c10.c b/drivers/media/i2c/ov02c10.c
-index 3a02fce0a9bc0..103d007415348 100644
+index 3a02fce0a..103d00741 100644
 --- a/drivers/media/i2c/ov02c10.c
 +++ b/drivers/media/i2c/ov02c10.c
 @@ -384,6 +384,8 @@ struct ov02c10 {

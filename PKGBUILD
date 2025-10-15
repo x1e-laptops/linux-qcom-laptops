@@ -6,7 +6,7 @@ pkgname=(
   "$pkgbase-headers"
 )
 pkgver=6.17.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux for qcom laptops'
 url='https://gitlab.com/Linaro/arm64-laptops/linux'
 arch=('x86_64' 'aarch64')
@@ -59,7 +59,7 @@ source=(
 sha256sums=(
   '4178519c5ca2a3193928ccffd972fecfda68c1a0ffafb4bbcb9930ca0d84dba0'
   '5ce56beb80c1e49a9cba4148144bd22ee5f37d8d02a3c0cea97d3766a9b1460f'
-  '72197885465d3f07b9d5ea7b11fb720f15070b7eeb57b73c0a83082c290bee00'
+  '1474c2952580c7a5fdc35cdea037ea4543820ea1e2cb7e54ba71e8155d310fd6'
   '4f706de5a92c30d614a4cd5cf9351cafce28fd8ef83b56fcc6820973fcce2421'
   '45c1685b55dcf51263d6c135a5194eafe42a734d7401b6c85aed88d4d19dfc24'
   '41d88df93bf6f2e7a4bb3a7d6ae430875efe04cb22599afb0f60cfee13471f21'

@@ -6,7 +6,7 @@ pkgname=(
   "$pkgbase-headers"
 )
 pkgver=6.17.arch1
-pkgrel=2
+pkgrel=4
 pkgdesc='Linux for qcom laptops'
 url='https://gitlab.com/Linaro/arm64-laptops/linux'
 arch=('x86_64' 'aarch64')
@@ -25,6 +25,7 @@ makedepends=(
   zig
   clang
   llvm
+  lld
 )
 options=(
   !debug
@@ -35,7 +36,7 @@ _srcname=linux-${_commit}
 source=(
   "https://gitlab.com/Linaro/arm64-laptops/linux/-/archive/${_commit}/linux-${_commit}.tar.gz"
   https://github.com/binarycraft007/modextractor/releases/download/v0.0.1/modextractor
-  pmos.config
+  kernel-aarch64-fedora.config
   misc.config
   linux-qcom-laptops.preset
   60-dtbs-remove.hook
@@ -59,8 +60,8 @@ source=(
 sha256sums=(
   '4178519c5ca2a3193928ccffd972fecfda68c1a0ffafb4bbcb9930ca0d84dba0'
   '5ce56beb80c1e49a9cba4148144bd22ee5f37d8d02a3c0cea97d3766a9b1460f'
-  '1474c2952580c7a5fdc35cdea037ea4543820ea1e2cb7e54ba71e8155d310fd6'
-  '4f706de5a92c30d614a4cd5cf9351cafce28fd8ef83b56fcc6820973fcce2421'
+  'fcf0ec48880ecbdaca5d9594f3dcfb4c452bae2bd9e1e0133b8e72129a0d8de8'
+  '18a1d13c1bdd8bec005bb59e35af7eaa5ae29ad37a594d61e24bc2616cb78f0e'
   '45c1685b55dcf51263d6c135a5194eafe42a734d7401b6c85aed88d4d19dfc24'
   '41d88df93bf6f2e7a4bb3a7d6ae430875efe04cb22599afb0f60cfee13471f21'
   'fdb08dda6360a7703041b9a40713858c10548f2b664ab538a2091c810bea7b17'
@@ -111,9 +112,9 @@ prepare() {
   echo "Setting config..."
 
   unset LDFLAGS
-  cp "$srcdir/pmos.config" arch/"$ARCH"/configs/
   cp "$srcdir/misc.config" arch/"$ARCH"/configs/
-  make defconfig qcom_laptops.config pmos.config misc.config
+  cp "$srcdir/kernel-aarch64-fedora.config" arch/"$ARCH"/configs/
+  make defconfig kernel-aarch64-fedora.config qcom_laptops.config misc.config
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"

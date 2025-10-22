@@ -1,0 +1,37 @@
+diff --git a/arch/arm64/boot/dts/qcom/x1e80100-asus-vivobook-s15.dts b/arch/arm64/boot/dts/qcom/x1e80100-asus-vivobook-s15.dts
+index 099ec1c..dcb5ca5 100644
+--- a/arch/arm64/boot/dts/qcom/x1e80100-asus-vivobook-s15.dts
++++ b/arch/arm64/boot/dts/qcom/x1e80100-asus-vivobook-s15.dts
+@@ -215,12 +215,25 @@ platform {
+ 	};
+ 
+ 	reserved-memory {
++		#address-cells = <2>;
++		#size-cells = <2>;
++		ranges;
++
+ 		linux,cma {
+ 			compatible = "shared-dma-pool";
+ 			size = <0x0 0x8000000>;
+ 			reusable;
+ 			linux,cma-default;
+ 		};
++
++		ramoops_mem: ramoops@81600000 {
++			compatible = "ramoops";
++			reg = <0x0 0x81600000 0x0 0x200000>; /* 2MB at 0x81600000 */
++			record-size = <0x40000>;      /* 256 KiB for each kernel oops/panic */
++			console-size = <0x40000>;     /* 256 KiB for the console log */
++			pmsg-size = <0x20000>;        /* 128 KiB for persistent userspace messages */
++			no-map;
++		};
+ 	};
+ 
+ 	vreg_edp_3p3: regulator-edp-3p3 {
+@@ -1359,4 +1372,4 @@ &usb_mp_qmpphy1 {
+ 	vdda-pll-supply = <&vreg_l3c_0p8>;
+ 
+ 	status = "okay";
+-};
+\ No newline at end of file
++};

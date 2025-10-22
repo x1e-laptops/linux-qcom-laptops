@@ -5,8 +5,8 @@ pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
 )
-pkgver=6.17.arch1
-pkgrel=4
+pkgver=6.18.rc3.arch1
+pkgrel=6
 pkgdesc='Linux for qcom laptops'
 url='https://gitlab.com/Linaro/arm64-laptops/linux'
 arch=('x86_64' 'aarch64')
@@ -31,55 +31,49 @@ options=(
   !debug
   !strip
 )
-_commit=4a9b759f28636aa25db450062fd9453511d530d9
+_commit=093ac7a592c6e247f255528330e970be957014ac
 _srcname=linux-${_commit}
 source=(
   "https://gitlab.com/Linaro/arm64-laptops/linux/-/archive/${_commit}/linux-${_commit}.tar.gz"
-  https://github.com/binarycraft007/modextractor/releases/download/v0.0.1/modextractor
+  https://github.com/binarycraft007/modextractor/releases/download/v0.0.2/modextractor
   kernel-aarch64-fedora.config
   misc.config
   linux-qcom-laptops.preset
   60-dtbs-remove.hook
   90-dtbs-install.hook
   dtbs.sh
-  https://github.com/zig-pkgs/linux-tools/archive/refs/tags/v0.0.1.tar.gz
-  https://github.com/zig-pkgs/linux-tools/releases/download/v0.0.1/linux-tools-cache-v0.0.1.tar.gz
-  0001-media-ov02c10-Fix-default-vertical-flip.patch
-  0002-media-ov02c10-Support-hflip-and-vflip.patch
-  0003-arm64-dts-qcom-x1e80100-t14s-Mark-ov02c10-as-inverte.patch
-  0004-media-ov02c10-Invert-bayer-order-when-rotation-is-pr.patch
+  https://github.com/zig-pkgs/linux-tools/archive/refs/tags/v0.0.3.tar.gz
+  https://github.com/zig-pkgs/linux-tools/releases/download/v0.0.3/linux-tools-cache-v0.0.3.tar.gz
   0005-arm64-dts-qcom-support-sound-on-Asus-Vivobook-S15.patch
   0006-arm64-dts-qcom-x1e80100-asus-vivobook-s15-Enable-Iri.patch
   0007-hid-add-asus-vivobook-s-15.patch
-  0008-PCI-ASPM-Allow-controller-drivers-to-override-defaul.patch
-  0009-add-custom-config.patch
-  0010-mkdebian-add-missing-dependency-add-hook-scripts.patch
   0011-arm64-dts-qcom-x1-asus-vivobook-s15-Add-OV02C10-RGB.patch
+  0012-clk-qcom-gcc-x1e80100-Enable-runtime-PM.patch
+  0013-phy-qcom-mipi-csi2-enable-runtime-PM.patch
+  0014-power-supply-qcom_battmgr-clamp-charge-control-thresholds.patch
+  0015-Revert-PCI-qcom-Remove-custom-ASPM-enablement-code.patch
+  0016-dts-add-ramoops-reserved-mem.patch
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=(
-  '4178519c5ca2a3193928ccffd972fecfda68c1a0ffafb4bbcb9930ca0d84dba0'
-  '5ce56beb80c1e49a9cba4148144bd22ee5f37d8d02a3c0cea97d3766a9b1460f'
-  'fcf0ec48880ecbdaca5d9594f3dcfb4c452bae2bd9e1e0133b8e72129a0d8de8'
-  '18a1d13c1bdd8bec005bb59e35af7eaa5ae29ad37a594d61e24bc2616cb78f0e'
-  '45c1685b55dcf51263d6c135a5194eafe42a734d7401b6c85aed88d4d19dfc24'
-  '41d88df93bf6f2e7a4bb3a7d6ae430875efe04cb22599afb0f60cfee13471f21'
-  'fdb08dda6360a7703041b9a40713858c10548f2b664ab538a2091c810bea7b17'
-  'c1a0097e5e5640695f7d56c0dbe37d163602624b8b8c970f91221158cd321cce'
-  'a05cbef6253c21ba96cf03d97fe9df69acf5625d58b5034ddaf0183ab8e0fff7'
-  '10deee7fd409cd463bee7e5b53e5e78a2ad64959734b6e43559fa870e405376b'
-  'ffee97cbdab51670115868e2e9833878a4621953c56a1d9bf508996076c165ce'
-  '31e4a70b746bdccc3b81deaa473acf897696a83e357ff317d32af1ec1ab991ef'
-  'fa769822e4090e6f0894ed30faf721b8cb30532c8df61d734358b3c865363e92'
-  '566dd05341e9665a90b9dead343e535b3ae170527f13bd3c1ee70e710058132f'
-  '737d7967640a6a8f747243dfecb2637f6e0a7105d0b0ffe1686907d29e97947d'
-  '3d5bbf875b33c84369a1e413d2303f3d77c9200678996472d75b47191bfaa2c4'
-  'c26c2aac1ed57a11df77fcf1205dc483fb6001176000d09d09b48cd3686e765e'
-  'f709dc419934fede184686e8353096f1088589844e8cc542d97dc6ca17ba414d'
-  'e3213f77f5fd8ccdce11e7bca3ea8aadc0c65519954480f8000a942417ba664f'
-  'eeba26f37021b00670c493eb4bb2dddad244c490301c1def548d6049d6884949'
-  '98489ad42db0a5f3d8dd6112af8508581fa22cd4a0caf5864b72331e1b915170'
-)
+sha256sums=('b917e2ba482e4913094e24bbd555666ecb39734110b0f174ebe336454053d563'
+            'e55878cc5c5e6e835759a61fe7b986f36c767b766abcce2cd354c07a2a4ab3e0'
+            '5238a2ad32e247dce6f58a4d030d6061aa3b2fb07059165724c67ee4007b1171'
+            'a71243dbb009b7a3a01dea57e97e5aef4e9bf759dd24e25aea25948634b27a07'
+            '45c1685b55dcf51263d6c135a5194eafe42a734d7401b6c85aed88d4d19dfc24'
+            '41d88df93bf6f2e7a4bb3a7d6ae430875efe04cb22599afb0f60cfee13471f21'
+            'fdb08dda6360a7703041b9a40713858c10548f2b664ab538a2091c810bea7b17'
+            'c1a0097e5e5640695f7d56c0dbe37d163602624b8b8c970f91221158cd321cce'
+            'a2ddad95e024cde114ef248db09adb0724b469dd47950454ef74a42cdbfcad8c'
+            '839727a71a35d37ec84fe85387e022d566e901c916e9f1045de779ac65ea4d28'
+            '737d7967640a6a8f747243dfecb2637f6e0a7105d0b0ffe1686907d29e97947d'
+            '3d5bbf875b33c84369a1e413d2303f3d77c9200678996472d75b47191bfaa2c4'
+            'c26c2aac1ed57a11df77fcf1205dc483fb6001176000d09d09b48cd3686e765e'
+            'd1070adc3cc99d9b161be8399f2f8d515a83e40b12b41a61d334e04eaaeafa3b'
+            '5dc4f535f4a13894c5ef9767129b04cd8c9e590b6be4cdc7b593af8faa244fa6'
+            'c7fdd43c9613b10d98b0b80e8d19affd80af3cedda691524137888467747e412'
+            '0923aeeeb0b6203acd97906c3edee1dee7bf9c03399bd2e7877d04951eb1e7c5'
+            '3cbdc35fd891cd1fc27d0d3730d0427f66b5685245d6d9ca96588e3abd602310'
+            'f7c4eab43a06cbdacc830ecc80d4077d865a486c9b5d98996c6014878fb7ab4a')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -224,9 +218,9 @@ package_linux-qcom-laptops-headers() {
   make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
     link=  # Suppress build-id symlinks
 
-  cp "$srcdir"/linux-tools-0.0.1/build.zig* ./
+  cp "$srcdir"/linux-tools-0.0.3/build.zig* ./
   zig build -Dtarget=aarch64-linux -Doptimize=ReleaseSmall \
-    --global-cache-dir "$srcdir"/linux-tools-cache-v0.0.1 \
+    --global-cache-dir "$srcdir"/linux-tools-cache-v0.0.3 \
     -p "$builddir" --summary all
   rm build.zig*
 

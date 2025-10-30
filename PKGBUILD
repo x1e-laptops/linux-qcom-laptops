@@ -5,8 +5,8 @@ pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
 )
-pkgver=6.18.rc2.arch1
-pkgrel=4
+pkgver=6.18.rc3.arch1
+pkgrel=1
 pkgdesc='Linux for qcom laptops'
 url='https://gitlab.com/Linaro/arm64-laptops/linux'
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ options=(
   !debug
   !strip
 )
-_commit=23e3d7f3fec95117642a0e84b959adb595cb1421
+_commit=093ac7a592c6e247f255528330e970be957014ac
 _srcname=linux-${_commit}
 source=(
   "https://gitlab.com/Linaro/arm64-laptops/linux/-/archive/${_commit}/linux-${_commit}.tar.gz"
@@ -42,28 +42,28 @@ source=(
   60-dtbs-remove.hook
   90-dtbs-install.hook
   dtbs.sh
-  https://github.com/zig-pkgs/linux-tools/archive/refs/tags/v0.0.2.tar.gz
-  https://github.com/zig-pkgs/linux-tools/releases/download/v0.0.2/linux-tools-cache-v0.0.2.tar.gz
+  https://github.com/zig-pkgs/linux-tools/archive/refs/tags/v0.0.3.tar.gz
+  https://github.com/zig-pkgs/linux-tools/releases/download/v0.0.3/linux-tools-cache-v0.0.3.tar.gz
   0005-arm64-dts-qcom-support-sound-on-Asus-Vivobook-S15.patch
   0006-arm64-dts-qcom-x1e80100-asus-vivobook-s15-Enable-Iri.patch
   0007-hid-add-asus-vivobook-s-15.patch
   0011-arm64-dts-qcom-x1-asus-vivobook-s15-Add-OV02C10-RGB.patch
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('20f89e53e83b2bdaea8e256f04b2b58960e479deecdb92f169e465e6c2c2769d'
+sha256sums=('b917e2ba482e4913094e24bbd555666ecb39734110b0f174ebe336454053d563'
             'e55878cc5c5e6e835759a61fe7b986f36c767b766abcce2cd354c07a2a4ab3e0'
-            'f72ef6b2e7b621d543bd4c1ea852f154ab0a7c3791d1fe98ae78e51af34eac78'
-            '18a1d13c1bdd8bec005bb59e35af7eaa5ae29ad37a594d61e24bc2616cb78f0e'
+            '5238a2ad32e247dce6f58a4d030d6061aa3b2fb07059165724c67ee4007b1171'
+            '62a3824e59bdd905335636b67944ed9220401ac685c74c69e10dafced5a528b7'
             '45c1685b55dcf51263d6c135a5194eafe42a734d7401b6c85aed88d4d19dfc24'
             '41d88df93bf6f2e7a4bb3a7d6ae430875efe04cb22599afb0f60cfee13471f21'
             'fdb08dda6360a7703041b9a40713858c10548f2b664ab538a2091c810bea7b17'
             'c1a0097e5e5640695f7d56c0dbe37d163602624b8b8c970f91221158cd321cce'
-            'a86ae2bcd233c1e8a94fc1161e77ff937724282c07c230aca0bd1346bbce4f66'
-            '4119eb08a4564ca8dc3933a16666da12caf55d7bd7268f180222426f87c47ab6'
+            'a2ddad95e024cde114ef248db09adb0724b469dd47950454ef74a42cdbfcad8c'
+            '839727a71a35d37ec84fe85387e022d566e901c916e9f1045de779ac65ea4d28'
             '737d7967640a6a8f747243dfecb2637f6e0a7105d0b0ffe1686907d29e97947d'
             '3d5bbf875b33c84369a1e413d2303f3d77c9200678996472d75b47191bfaa2c4'
             'c26c2aac1ed57a11df77fcf1205dc483fb6001176000d09d09b48cd3686e765e'
-            '98489ad42db0a5f3d8dd6112af8508581fa22cd4a0caf5864b72331e1b915170')
+            'd1070adc3cc99d9b161be8399f2f8d515a83e40b12b41a61d334e04eaaeafa3b')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -208,9 +208,9 @@ package_linux-qcom-laptops-headers() {
   make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
     link=  # Suppress build-id symlinks
 
-  cp "$srcdir"/linux-tools-0.0.2/build.zig* ./
+  cp "$srcdir"/linux-tools-0.0.3/build.zig* ./
   zig build -Dtarget=aarch64-linux -Doptimize=ReleaseSmall \
-    --global-cache-dir "$srcdir"/linux-tools-cache-v0.0.2 \
+    --global-cache-dir "$srcdir"/linux-tools-cache-v0.0.3 \
     -p "$builddir" --summary all
   rm build.zig*
 

@@ -5,8 +5,8 @@ pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
 )
-pkgver=6.18.rc3.arch1
-pkgrel=6
+pkgver=6.18.rc4.arch1
+pkgrel=1
 pkgdesc='Linux for qcom laptops'
 url='https://gitlab.com/Linaro/arm64-laptops/linux'
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ options=(
   !debug
   !strip
 )
-_commit=093ac7a592c6e247f255528330e970be957014ac
+_commit=956f14fda9ab95178c725ca8d62db578fc2ef07b
 _srcname=linux-${_commit}
 source=(
   "https://gitlab.com/Linaro/arm64-laptops/linux/-/archive/${_commit}/linux-${_commit}.tar.gz"
@@ -51,13 +51,12 @@ source=(
   0012-clk-qcom-gcc-x1e80100-Enable-runtime-PM.patch
   0013-phy-qcom-mipi-csi2-enable-runtime-PM.patch
   0014-power-supply-qcom_battmgr-clamp-charge-control-thresholds.patch
-  0015-Revert-PCI-qcom-Remove-custom-ASPM-enablement-code.patch
   0016-dts-add-ramoops-reserved-mem.patch
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('b917e2ba482e4913094e24bbd555666ecb39734110b0f174ebe336454053d563'
+sha256sums=('cb3d0e9cc4c21af4848cda7924007515acc34aea32e45bd9937cc602ee2070f7'
             'e55878cc5c5e6e835759a61fe7b986f36c767b766abcce2cd354c07a2a4ab3e0'
-            '5238a2ad32e247dce6f58a4d030d6061aa3b2fb07059165724c67ee4007b1171'
+            '5da63e82824b8997679493feec1066a0ba58ea236e2ecc8dce9a01c52a238cef'
             'a71243dbb009b7a3a01dea57e97e5aef4e9bf759dd24e25aea25948634b27a07'
             '45c1685b55dcf51263d6c135a5194eafe42a734d7401b6c85aed88d4d19dfc24'
             '41d88df93bf6f2e7a4bb3a7d6ae430875efe04cb22599afb0f60cfee13471f21'
@@ -72,7 +71,6 @@ sha256sums=('b917e2ba482e4913094e24bbd555666ecb39734110b0f174ebe336454053d563'
             '5dc4f535f4a13894c5ef9767129b04cd8c9e590b6be4cdc7b593af8faa244fa6'
             'c7fdd43c9613b10d98b0b80e8d19affd80af3cedda691524137888467747e412'
             '0923aeeeb0b6203acd97906c3edee1dee7bf9c03399bd2e7877d04951eb1e7c5'
-            '3cbdc35fd891cd1fc27d0d3730d0427f66b5685245d6d9ca96588e3abd602310'
             'f7c4eab43a06cbdacc830ecc80d4077d865a486c9b5d98996c6014878fb7ab4a')
 
 export KBUILD_BUILD_HOST=archlinux

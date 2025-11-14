@@ -6,7 +6,7 @@ pkgname=(
   "$pkgbase-headers"
 )
 pkgver=6.18.rc4.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux for qcom laptops'
 url='https://gitlab.com/Linaro/arm64-laptops/linux'
 arch=('x86_64' 'aarch64')
@@ -51,7 +51,6 @@ source=(
   0012-clk-qcom-gcc-x1e80100-Enable-runtime-PM.patch
   0013-phy-qcom-mipi-csi2-enable-runtime-PM.patch
   0014-power-supply-qcom_battmgr-clamp-charge-control-thresholds.patch
-  0016-dts-add-ramoops-reserved-mem.patch
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('cb3d0e9cc4c21af4848cda7924007515acc34aea32e45bd9937cc602ee2070f7'
@@ -66,12 +65,11 @@ sha256sums=('cb3d0e9cc4c21af4848cda7924007515acc34aea32e45bd9937cc602ee2070f7'
             '839727a71a35d37ec84fe85387e022d566e901c916e9f1045de779ac65ea4d28'
             '737d7967640a6a8f747243dfecb2637f6e0a7105d0b0ffe1686907d29e97947d'
             '3d5bbf875b33c84369a1e413d2303f3d77c9200678996472d75b47191bfaa2c4'
-            'c26c2aac1ed57a11df77fcf1205dc483fb6001176000d09d09b48cd3686e765e'
+            '69067b2658b136bc440db12b4864887c2313841b1085ff4338c9ac5331a6ae67'
             'd1070adc3cc99d9b161be8399f2f8d515a83e40b12b41a61d334e04eaaeafa3b'
             '5dc4f535f4a13894c5ef9767129b04cd8c9e590b6be4cdc7b593af8faa244fa6'
             'c7fdd43c9613b10d98b0b80e8d19affd80af3cedda691524137888467747e412'
-            '0923aeeeb0b6203acd97906c3edee1dee7bf9c03399bd2e7877d04951eb1e7c5'
-            'f7c4eab43a06cbdacc830ecc80d4077d865a486c9b5d98996c6014878fb7ab4a')
+            '0923aeeeb0b6203acd97906c3edee1dee7bf9c03399bd2e7877d04951eb1e7c5')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -239,8 +237,8 @@ package_linux-qcom-laptops-headers() {
   echo "Removing loose objects..."
   find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
 
-  echo "Stripping vmlinux..."
-  strip -v $STRIP_STATIC "$builddir/vmlinux"
+  #echo "Stripping vmlinux..."
+  #strip -v $STRIP_STATIC "$builddir/vmlinux"
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"

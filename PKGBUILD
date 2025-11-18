@@ -5,8 +5,8 @@ pkgname=(
   "$pkgbase"
   "$pkgbase-headers"
 )
-pkgver=6.18.rc4.arch1
-pkgrel=2
+pkgver=6.18.rc5.arch1
+pkgrel=1
 pkgdesc='Linux for qcom laptops'
 url='https://gitlab.com/Linaro/arm64-laptops/linux'
 arch=('x86_64' 'aarch64')
@@ -31,7 +31,7 @@ options=(
   !debug
   !strip
 )
-_commit=956f14fda9ab95178c725ca8d62db578fc2ef07b
+_commit=4f5299799f154f9b4e6eee70e9b98879b6bfa7a9
 _srcname=linux-${_commit}
 source=(
   "https://gitlab.com/Linaro/arm64-laptops/linux/-/archive/${_commit}/linux-${_commit}.tar.gz"
@@ -53,7 +53,7 @@ source=(
   0014-power-supply-qcom_battmgr-clamp-charge-control-thresholds.patch
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('cb3d0e9cc4c21af4848cda7924007515acc34aea32e45bd9937cc602ee2070f7'
+sha256sums=('c37dce8bb960ec3fff69e436720bda4d48defce04a2ca9b927834816ef511be0'
             'e55878cc5c5e6e835759a61fe7b986f36c767b766abcce2cd354c07a2a4ab3e0'
             '5da63e82824b8997679493feec1066a0ba58ea236e2ecc8dce9a01c52a238cef'
             'a71243dbb009b7a3a01dea57e97e5aef4e9bf759dd24e25aea25948634b27a07'

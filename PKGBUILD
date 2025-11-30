@@ -3,9 +3,8 @@
 pkgbase=linux-qcom-laptops
 pkgname=(
   "$pkgbase"
-  "$pkgbase-headers"
 )
-pkgver=6.18.rc5.arch1
+pkgver=6.18.rc6.arch1
 pkgrel=1
 pkgdesc='Linux for qcom laptops'
 url='https://gitlab.com/Linaro/arm64-laptops/linux'
@@ -31,7 +30,7 @@ options=(
   !debug
   !strip
 )
-_commit=4f5299799f154f9b4e6eee70e9b98879b6bfa7a9
+_commit=4654e015816964ac8bca615a6c3bc4ad30b6f283
 _srcname=linux-${_commit}
 source=(
   "https://gitlab.com/Linaro/arm64-laptops/linux/-/archive/${_commit}/linux-${_commit}.tar.gz"
@@ -53,7 +52,7 @@ source=(
   0014-power-supply-qcom_battmgr-clamp-charge-control-thresholds.patch
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('c37dce8bb960ec3fff69e436720bda4d48defce04a2ca9b927834816ef511be0'
+sha256sums=('e8b2ad9d46d8835053d268481580b326c1f5e3419dd19d215512131f41c59486'
             'e55878cc5c5e6e835759a61fe7b986f36c767b766abcce2cd354c07a2a4ab3e0'
             '5da63e82824b8997679493feec1066a0ba58ea236e2ecc8dce9a01c52a238cef'
             'a71243dbb009b7a3a01dea57e97e5aef4e9bf759dd24e25aea25948634b27a07'
@@ -171,78 +170,6 @@ package_linux-qcom-laptops() {
 
   # remove build link
   rm "$modulesdir"/build
-}
-
-package_linux-qcom-laptops-headers() {
-  pkgdesc+=" - Headers and scripts"
-  depends=(pahole)
-
-  cd $_srcname
-  local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
-
-  echo "Installing build files..."
-  install -Dt "$builddir" -m644 .config Makefile Module.symvers System.map \
-    localversion.* version vmlinux tools/bpf/bpftool/vmlinux.h
-  install -Dt "$builddir/kernel" -m644 kernel/Makefile
-  install -Dt "$builddir/arch/$ARCH" -m644 arch/$ARCH/Makefile
-  cp -t "$builddir" -a scripts
-  ln -srt "$builddir" "$builddir/scripts/gdb/vmlinux-gdb.py"
-
-  echo "Installing headers..."
-  cp -t "$builddir" -a include
-  cp -t "$builddir/arch/$ARCH" -a arch/$ARCH/include
-  install -Dt "$builddir/arch/$ARCH/kernel" -m644 arch/$ARCH/kernel/asm-offsets.s
-
-  install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
-  install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
-
-  # https://bugs.archlinux.org/task/13146
-  install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
-
-  # https://bugs.archlinux.org/task/20402
-  install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
-  install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
-  install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
-
-  # https://bugs.archlinux.org/task/71392
-  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
-
-  echo "Installing KConfig files..."
-  find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
-
-  echo "Installing unstripped VDSO..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" vdso_install \
-    link=  # Suppress build-id symlinks
-
-  cp "$srcdir"/linux-tools-0.0.3/build.zig* ./
-  zig build -Dtarget=aarch64-linux -Doptimize=ReleaseSmall \
-    --global-cache-dir "$srcdir"/linux-tools-cache-v0.0.3 \
-    -p "$builddir" --summary all
-  rm build.zig*
-
-  echo "Removing unneeded architectures..."
-  local arch
-  for arch in "$builddir"/arch/*/; do
-    [[ $arch = */$ARCH/ ]] && continue
-    echo "Removing $(basename "$arch")"
-    rm -r "$arch"
-  done
-
-  echo "Removing documentation..."
-  rm -r "$builddir/Documentation"
-
-  echo "Removing broken symlinks..."
-  find -L "$builddir" -type l -printf 'Removing %P\n' -delete
-
-  echo "Removing loose objects..."
-  find "$builddir" -type f -name '*.o' -printf 'Removing %P\n' -delete
-
-  #echo "Stripping vmlinux..."
-  #strip -v $STRIP_STATIC "$builddir/vmlinux"
-
-  echo "Adding symlink..."
-  mkdir -p "$pkgdir/usr/src"
-  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
 }
 
 # vim:set ts=8 sts=2 sw=2 et:

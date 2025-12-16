@@ -5,9 +5,9 @@ pkgname=(
   "$pkgbase"
 )
 pkgver=6.18.arch1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux for qcom laptops'
-url='https://gitlab.com/Linaro/arm64-laptops/linux'
+url='https://gitlab.com/binarycraft/linux'
 arch=('x86_64' 'aarch64')
 license=(GPL-2.0-only)
 makedepends=(
@@ -33,7 +33,7 @@ options=(
 _commit=d56d61d11040033212de5d04b580c40bcd15bb96
 _srcname=linux-${_commit}
 source=(
-  "https://gitlab.com/Linaro/arm64-laptops/linux/-/archive/${_commit}/linux-${_commit}.tar.gz"
+  "https://gitlab.com/binarycraft/linux/-/archive/${_commit}/linux-${_commit}.tar.gz"
   https://github.com/binarycraft007/modextractor/releases/download/v0.0.2/modextractor
   kernel-aarch64-fedora.config
   misc.config

@@ -5,7 +5,7 @@ pkgname=(
   "$pkgbase"
 )
 pkgver=6.18.arch1
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux for qcom laptops'
 url='https://gitlab.com/Linaro/arm64-laptops/linux'
 arch=('x86_64' 'aarch64')
@@ -47,8 +47,6 @@ source=(
   0006-arm64-dts-qcom-x1e80100-asus-vivobook-s15-Enable-Iri.patch
   0007-hid-add-asus-vivobook-s-15.patch
   0011-arm64-dts-qcom-x1-asus-vivobook-s15-Add-OV02C10-RGB.patch
-  0012-clk-qcom-gcc-x1e80100-Enable-runtime-PM.patch
-  0013-phy-qcom-mipi-csi2-enable-runtime-PM.patch
   0014-power-supply-qcom_battmgr-clamp-charge-control-thresholds.patch
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
@@ -66,8 +64,6 @@ sha256sums=('0664db35235613c7fbd5ce7c04b1b78f0e6a859c5dc520a8306e32ff5b5e2717'
             '3d5bbf875b33c84369a1e413d2303f3d77c9200678996472d75b47191bfaa2c4'
             '69067b2658b136bc440db12b4864887c2313841b1085ff4338c9ac5331a6ae67'
             'd1070adc3cc99d9b161be8399f2f8d515a83e40b12b41a61d334e04eaaeafa3b'
-            '5dc4f535f4a13894c5ef9767129b04cd8c9e590b6be4cdc7b593af8faa244fa6'
-            'c7fdd43c9613b10d98b0b80e8d19affd80af3cedda691524137888467747e412'
             '0923aeeeb0b6203acd97906c3edee1dee7bf9c03399bd2e7877d04951eb1e7c5')
 
 export KBUILD_BUILD_HOST=archlinux

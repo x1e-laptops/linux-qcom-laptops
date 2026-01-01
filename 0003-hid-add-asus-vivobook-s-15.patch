@@ -1,7 +1,7 @@
-From 750dbae699d496f8ecb7bc7ff8df976c83994aab Mon Sep 17 00:00:00 2001
+From d8c89326418c817bd3b39935dd190769e560bf31 Mon Sep 17 00:00:00 2001
 From: binarycraft007 <elliot.huang.signed@gmail.com>
 Date: Sun, 21 Sep 2025 18:34:18 +0800
-Subject: [PATCH] hid: add asus vivobook s 15
+Subject: [PATCH 3/5] hid: add asus vivobook s 15
 
 ---
  drivers/hid/Kconfig                 |  14 ++
@@ -11,7 +11,7 @@ Subject: [PATCH] hid: add asus vivobook s 15
  create mode 100644 drivers/hid/hid-asus-vivobook-s15.c
 
 diff --git a/drivers/hid/Kconfig b/drivers/hid/Kconfig
-index 04420a71..e7386acf 100644
+index 04420a713..e7386acfe 100644
 --- a/drivers/hid/Kconfig
 +++ b/drivers/hid/Kconfig
 @@ -202,6 +202,20 @@ config HID_ASUS
@@ -36,7 +36,7 @@ index 04420a71..e7386acf 100644
  	tristate "Aureal"
  	help
 diff --git a/drivers/hid/Makefile b/drivers/hid/Makefile
-index 361a7dae..7f287d1d 100644
+index 361a7daed..7f287d1d7 100644
 --- a/drivers/hid/Makefile
 +++ b/drivers/hid/Makefile
 @@ -34,6 +34,7 @@ obj-$(CONFIG_HID_APPLETB_BL)	+= hid-appletb-bl.o
@@ -49,7 +49,7 @@ index 361a7dae..7f287d1d 100644
  obj-$(CONFIG_HID_BETOP_FF)	+= hid-betopff.o
 diff --git a/drivers/hid/hid-asus-vivobook-s15.c b/drivers/hid/hid-asus-vivobook-s15.c
 new file mode 100644
-index 00000000..b0534f3e
+index 000000000..b0534f3e0
 --- /dev/null
 +++ b/drivers/hid/hid-asus-vivobook-s15.c
 @@ -0,0 +1,346 @@
@@ -400,5 +400,5 @@ index 00000000..b0534f3e
 +MODULE_AUTHOR("Elliot Huang <keep.it.sns@gmail.com>");
 +MODULE_DESCRIPTION("HID driver for ASUS Vivobook S15 S5507 Keyboard");
 -- 
-2.51.2
+2.52.0
 

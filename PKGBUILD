@@ -5,7 +5,7 @@ pkgname=(
   "$pkgbase"
 )
 pkgver=6.18.arch1
-pkgrel=5
+pkgrel=6
 pkgdesc='Linux for qcom laptops'
 url='https://gitlab.com/Linaro/arm64-laptops/linux'
 arch=('x86_64' 'aarch64')
@@ -43,11 +43,11 @@ source=(
   dtbs.sh
   https://github.com/zig-pkgs/linux-tools/archive/refs/tags/v0.0.3.tar.gz
   https://github.com/zig-pkgs/linux-tools/releases/download/v0.0.3/linux-tools-cache-v0.0.3.tar.gz
-  0005-arm64-dts-qcom-support-sound-on-Asus-Vivobook-S15.patch
-  0006-arm64-dts-qcom-x1e80100-asus-vivobook-s15-Enable-Iri.patch
-  0007-hid-add-asus-vivobook-s-15.patch
-  0011-arm64-dts-qcom-x1-asus-vivobook-s15-Add-OV02C10-RGB.patch
-  0014-power-supply-qcom_battmgr-clamp-charge-control-thresholds.patch
+  0001-arm64-dts-qcom-support-sound-on-Asus-Vivobook-S15.patch
+  0002-arm64-dts-qcom-x1e80100-asus-vivobook-s15-Enable-Iri.patch
+  0003-hid-add-asus-vivobook-s-15.patch
+  0004-arm64-dts-qcom-x1-asus-vivobook-s15-Add-OV02C10-RGB-.patch
+  0005-power-supply-qcom_battmgr-clamp-charge-control-thres.patch
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('0664db35235613c7fbd5ce7c04b1b78f0e6a859c5dc520a8306e32ff5b5e2717'
@@ -60,11 +60,11 @@ sha256sums=('0664db35235613c7fbd5ce7c04b1b78f0e6a859c5dc520a8306e32ff5b5e2717'
             'c1a0097e5e5640695f7d56c0dbe37d163602624b8b8c970f91221158cd321cce'
             'a2ddad95e024cde114ef248db09adb0724b469dd47950454ef74a42cdbfcad8c'
             '839727a71a35d37ec84fe85387e022d566e901c916e9f1045de779ac65ea4d28'
-            '737d7967640a6a8f747243dfecb2637f6e0a7105d0b0ffe1686907d29e97947d'
-            '3d5bbf875b33c84369a1e413d2303f3d77c9200678996472d75b47191bfaa2c4'
-            '69067b2658b136bc440db12b4864887c2313841b1085ff4338c9ac5331a6ae67'
-            'd1070adc3cc99d9b161be8399f2f8d515a83e40b12b41a61d334e04eaaeafa3b'
-            '0923aeeeb0b6203acd97906c3edee1dee7bf9c03399bd2e7877d04951eb1e7c5')
+            '93c6634da87eb6eeb29eaee3dced1532c19d8b1a02bed7f8aed03198496f32b1'
+            '29588b73e0b5db9a2284f8af2b2afd47bba7222bf5d1fb82861d5b1b791f59d3'
+            '3967c7f0b2effc54c7cba8d62136324d5116af987814f3e3a8544507017137d9'
+            'c0523ff4b413194a0ce4023a9cfc248d6eb14050243e681cf35a9a103a4fbf74'
+            'bf13a62a6558a736edc9e586573565e270d7996275cbbb880ae9698d90bc2142')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

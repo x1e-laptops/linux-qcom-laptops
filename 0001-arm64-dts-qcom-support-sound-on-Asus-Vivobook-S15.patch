@@ -1,7 +1,7 @@
-From f5538fe6f7f06e1d1120e9f7070bec23a5d01a48 Mon Sep 17 00:00:00 2001
+From 36c8e5c17f4b41af0311db8902d8c386f279725d Mon Sep 17 00:00:00 2001
 From: binarycraft007 <elliot.huang.signed@gmail.com>
 Date: Mon, 2 Jun 2025 13:27:03 +0800
-Subject: [PATCH 1/6] arm64: dts: qcom: support sound on Asus Vivobook S15
+Subject: [PATCH 1/7] arm64: dts: qcom: support sound on Asus Vivobook S15
 
 ---
  .../dts/qcom/x1e80100-asus-vivobook-s15.dts   | 202 ++++++++++++++++++

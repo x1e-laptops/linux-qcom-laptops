@@ -5,7 +5,7 @@ pkgname=(
   "$pkgbase"
 )
 pkgver=6.18.arch1
-pkgrel=7
+pkgrel=8
 pkgdesc='Linux for qcom laptops'
 url='https://gitlab.com/Linaro/arm64-laptops/linux'
 arch=('x86_64' 'aarch64')
@@ -45,24 +45,28 @@ source=(
   https://github.com/zig-pkgs/linux-tools/releases/download/v0.0.3/linux-tools-cache-v0.0.3.tar.gz
   0001-arm64-dts-qcom-support-sound-on-Asus-Vivobook-S15.patch
   0002-arm64-dts-qcom-x1e80100-asus-vivobook-s15-Enable-Iri.patch
-  0004-arm64-dts-qcom-x1-asus-vivobook-s15-Add-OV02C10-RGB-.patch
-  0005-power-supply-qcom_battmgr-clamp-charge-control-thres.patch
+  0003-arm64-dts-qcom-x1-asus-vivobook-s15-Add-OV02C10-RGB-.patch
+  0004-power-supply-qcom_battmgr-clamp-charge-control-thres.patch
+  0005-asus-vivobook-s15-add-wip-EC-driver.patch
+  0006-fix-compile-error-with-latest-compiler.patch
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=('0664db35235613c7fbd5ce7c04b1b78f0e6a859c5dc520a8306e32ff5b5e2717'
             'e55878cc5c5e6e835759a61fe7b986f36c767b766abcce2cd354c07a2a4ab3e0'
             '51d945675faf0a6b46b099288f6752af50af65c713566beffb1515052542b7f4'
-            'dbfaf1572fb14384c623e4581730a0576c8f8d651a9ebe620c8b5d1687a88a20'
+            'dd7e37096422445bc568aee0cf56f22bffc5e6f3089494f4110e5cd18ffd2874'
             '45c1685b55dcf51263d6c135a5194eafe42a734d7401b6c85aed88d4d19dfc24'
             '41d88df93bf6f2e7a4bb3a7d6ae430875efe04cb22599afb0f60cfee13471f21'
             'fdb08dda6360a7703041b9a40713858c10548f2b664ab538a2091c810bea7b17'
             'c1a0097e5e5640695f7d56c0dbe37d163602624b8b8c970f91221158cd321cce'
             'a2ddad95e024cde114ef248db09adb0724b469dd47950454ef74a42cdbfcad8c'
             '839727a71a35d37ec84fe85387e022d566e901c916e9f1045de779ac65ea4d28'
-            '93c6634da87eb6eeb29eaee3dced1532c19d8b1a02bed7f8aed03198496f32b1'
-            '29588b73e0b5db9a2284f8af2b2afd47bba7222bf5d1fb82861d5b1b791f59d3'
-            'c0523ff4b413194a0ce4023a9cfc248d6eb14050243e681cf35a9a103a4fbf74'
-            'bf13a62a6558a736edc9e586573565e270d7996275cbbb880ae9698d90bc2142')
+            '60bd176836aff18a9aee81e4b9bb51c9a5817d16409014f9d7409204ee3cc251'
+            'aa97f13faa02bc2abb4cb537fa47b100b0584de5af3c5c0788a35a065f697696'
+            '7a72d6ced2a0ef9a34812bdbc5c8d2af2334c3965fa84911b7f2f8b512a972c4'
+            '728ac78af90028c0ae0e10dd717d00bd4388642bccddc7b18f638c4cab5aea15'
+            '56281fe2432adbf6b2a68d47e0ea2da7be71131fd5a1bf2204ea61e57bacac16'
+            '6acb68ae6eb1db01db9b9f7f2510b8fe35f2fe424ac406155bc484021fb6655d')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

@@ -1,7 +1,7 @@
-From 7e321c727603053497847c831989eb533e88a1b6 Mon Sep 17 00:00:00 2001
+From 59bce745b24349bad530778bc544f1b02d8d7ce1 Mon Sep 17 00:00:00 2001
 From: Val Packett <val@packett.cool>
 Date: Sun, 12 Oct 2025 18:29:32 -0300
-Subject: [PATCH 5/5] power: supply: qcom_battmgr: clamp charge control
+Subject: [PATCH 4/6] power: supply: qcom_battmgr: clamp charge control
  thresholds
 
 The sysfs API documentation says that drivers "round written values to
@@ -49,5 +49,5 @@ index 3c2837ef3..c8028606b 100644
  	if (battmgr->info.charge_ctrl_start && end_soc > battmgr->info.charge_ctrl_start)
  		delta_soc = end_soc - battmgr->info.charge_ctrl_start;
 -- 
-2.52.0
+2.53.0
 

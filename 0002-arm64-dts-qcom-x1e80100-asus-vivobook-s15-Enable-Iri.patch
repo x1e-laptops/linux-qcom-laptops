@@ -1,7 +1,7 @@
-From 217c1be4c529640dde035389255d4ee592797fd5 Mon Sep 17 00:00:00 2001
+From 2c3b6d8e406dc1b78047b84f43cb886adccbc6c1 Mon Sep 17 00:00:00 2001
 From: binarycraft007 <elliot.huang.signed@gmail.com>
 Date: Sat, 20 Sep 2025 19:23:41 +0800
-Subject: [PATCH 2/5] arm64: dts: qcom: x1e80100-asus-vivobook-s15: Enable Iris
+Subject: [PATCH 2/6] arm64: dts: qcom: x1e80100-asus-vivobook-s15: Enable Iris
  video codec
 
 ---
@@ -25,5 +25,5 @@ index 71117c4b5..a0e518958 100644
  	spkr_01_sd_n_active: spkr-01-sd-n-active-state {
  		pins = "gpio12";
 -- 
-2.52.0
+2.53.0
 

@@ -1,7 +1,7 @@
-From 0eeded22f236d283eb8bbe7479e53b9ee3a7abee Mon Sep 17 00:00:00 2001
+From a78abf3f33cf139e2aa4a726e71e0f0d473c632c Mon Sep 17 00:00:00 2001
 From: binarycraft007 <elliot.huang.signed@gmail.com>
 Date: Sun, 5 Oct 2025 23:31:21 +0800
-Subject: [PATCH 3/7] arm64: dts: qcom: x1-asus-vivobook-s15: Add OV02C10 RGB
+Subject: [PATCH 3/8] arm64: dts: qcom: x1-asus-vivobook-s15: Add OV02C10 RGB
  sensor on CSIPHY4
 
 ---

@@ -1,7 +1,7 @@
-From 2b4896bc822bfb9c69802144c997f3463334a966 Mon Sep 17 00:00:00 2001
+From e4ef7f2135bff86098a7a6ace791768e544e2549 Mon Sep 17 00:00:00 2001
 From: binarycraft007 <elliot.huang.signed@gmail.com>
 Date: Thu, 12 Feb 2026 11:25:44 +0100
-Subject: [PATCH 7/7] fix compile error with latest compiler
+Subject: [PATCH 8/8] fix compile error with latest compiler
 
 ---
  tools/lib/bpf/libbpf.c | 7 ++++---

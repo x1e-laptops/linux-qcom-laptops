@@ -1,7 +1,7 @@
-From 4c3bdef7ac17b26844844a51981765dd94615687 Mon Sep 17 00:00:00 2001
+From e496d95bec220153e1e098c48f2ec7445060ad33 Mon Sep 17 00:00:00 2001
 From: binarycraft007 <elliot.huang.signed@gmail.com>
 Date: Sun, 21 Sep 2025 18:34:18 +0800
-Subject: [PATCH 6/7] hid: add asus vivobook s 15
+Subject: [PATCH 6/8] hid: add asus vivobook s 15
 
 ---
  drivers/hid/Kconfig                 |  14 ++
